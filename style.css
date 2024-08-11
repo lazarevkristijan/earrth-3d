@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+}
+nav {
+  width: 100vh;
+  background: red;
+}
+div {
+  background-color: #fafafa;
+}
