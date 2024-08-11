@@ -1,5 +1,5 @@
 import * as THREE from "three"
-// import { OrbitControls } from "jsm/controls/OrbitControls.js"
+import { OrbitControls } from "jsm/controls/OrbitControls.js"
 import getStarField from "./getStarfield.js"
 
 const w = window.innerWidth
@@ -14,7 +14,7 @@ document.body.insertBefore(renderer.domElement, document.getElementById("main"))
 const earthGroup = new THREE.Group()
 earthGroup.rotation.z = (-23.4 * Math.PI) / 100
 scene.add(earthGroup)
-// new OrbitControls(camera, renderer.domElement)
+new OrbitControls(camera, renderer.domElement)
 
 const loader = new THREE.TextureLoader()
 const geometry = new THREE.IcosahedronGeometry(1, 12)

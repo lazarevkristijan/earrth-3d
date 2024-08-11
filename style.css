@@ -7,7 +7,7 @@
   color: #f0f0f0;
 }
 body {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 nav {
@@ -33,7 +33,4 @@ a {
 
 li {
   list-style: none;
-}
-div {
-  background-color: #f0f0f0;
 }
