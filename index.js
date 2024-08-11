@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import { OrbitControls } from "jsm/controls/OrbitControls.js"
+// import { OrbitControls } from "jsm/controls/OrbitControls.js"
 import getStarField from "./getStarfield.js"
 
 const w = window.innerWidth
@@ -9,7 +9,7 @@ const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000)
 camera.position.z = 5
 const renderer = new THREE.WebGLRenderer({ antialias: true })
 renderer.setSize(w, h)
-document.body.insertBefore(renderer.domElement, document.getElementById('maindiv'))
+document.body.insertBefore(renderer.domElement, document.getElementById("main"))
 
 const earthGroup = new THREE.Group()
 earthGroup.rotation.z = (-23.4 * Math.PI) / 100

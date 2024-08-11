@@ -1,10 +1,39 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue:ital,wght@0,100..800;1,100..800&display=swap");
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bebas Neue", sans-serif;
+  color: #f0f0f0;
 }
+body {
+  overflow-x: hidden;
+}
+
 nav {
-  width: 100vh;
-  background: red;
+  width: 100%;
+  background-color: #333;
+  padding: 20px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+nav > ul {
+  display: flex;
+  gap: 20px;
+}
+nav > ul > li {
+  color: #f0f0f0;
+  font-size: 1.1rem;
+}
+a {
+  color: #f0f0f0;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
 }
 div {
-  background-color: #fafafa;
+  background-color: #f0f0f0;
 }
