@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import { OrbitControls } from "jsm/controls/OrbitControls.js"
 import getStarField from "./getStarfield.js"
+import getFresnelMat from "./getFresnelMat.js"
 
 const fov = 75
 const w = window.innerWidth
@@ -20,35 +21,29 @@ controls.enableDamping = true
 controls.dampingFactor = 0.03
 
 const loader = new THREE.TextureLoader()
-const detail = 12
-const ball = new THREE.IcosahedronGeometry(1, detail)
+const ball = new THREE.IcosahedronGeometry(1, 12)
 const material = new THREE.MeshStandardMaterial({
-  map: loader.load("./assets/earthmap10k.jpg"),
-  // map: loader.load("./assets/earthmap10k.jpg"),
+  map: loader.load("./assets/newearth.jpg"),
 })
 const earthMesh = new THREE.Mesh(ball, material)
 earthGroup.add(earthMesh)
 
-const cloudsMaterial = new THREE.MeshStandardMaterial({
-  map: loader.load("./assets/earthcloudmap2.jpg"),
-  blending: THREE.AdditiveBlending,
-  transparent: true,
-  opacity: 0.2,
-})
-const cloudsMesh = new THREE.Mesh(ball, cloudsMaterial)
-cloudsMesh.scale.setScalar(1.003)
-earthGroup.add(cloudsMesh)
-
 const lightsMaterial = new THREE.MeshBasicMaterial({
   map: loader.load("./assets/earthnasa.jpg"),
   blending: THREE.AdditiveBlending,
+  transparent:true,
+  opacity: 0.7
 })
 const lightsMesh = new THREE.Mesh(ball, lightsMaterial)
 earthGroup.add(lightsMesh)
-const stars = getStarField({ numStars: 5000 })
+
+const stars = getStarField({ numStars: 10000 })
 scene.add(stars)
 
-
+const fresnelMat = getFresnelMat()
+const glowMesh = new THREE.Mesh(ball, fresnelMat)
+glowMesh.scale.setScalar(1.01)
+earthGroup.add(glowMesh)
 
 const sunLight = new THREE.DirectionalLight(0xffffff)
 sunLight.position.set(-2, 0.5, 2)
@@ -59,7 +54,7 @@ const animate = () => {
 
   earthMesh.rotation.y += 0.002
   lightsMesh.rotation.y += 0.002
-  cloudsMesh.rotation.y += 0.002
+    glowMesh.rotation.y += 0.002
   renderer.render(scene, camera)
   controls.update()
 }
